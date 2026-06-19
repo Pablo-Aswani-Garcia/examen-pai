@@ -10,7 +10,7 @@
  */
 
 import {AxisHandler} from './axis_handler';
-import {FunctionPoint} from '../function_point';
+import {FunctionPoint} from './function_point';
 
 /**
  * View class for the Buffon's needle program

@@ -10,7 +10,7 @@
  */
 
 import {evaluate, min, pi, random, sec, sin} from 'mathjs';
-import {FunctionPoint} from './model/function_point.js';
+import {FunctionPoint} from './function_point.js';
 /**
  * Model class for the Buffons needle
  */

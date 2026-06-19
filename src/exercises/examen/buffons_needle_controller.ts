@@ -11,7 +11,7 @@
 
 import {BuffonNeedleModel} from './buffons_needle_model';
 import { FunctionPoint } from './function_point';
-import {BuffonNeedleView} from './view/buffon_needle_view';
+import {BuffonNeedleView} from './buffon_needle_view';
 
 /**
  * Controller class for the Buffon Needle program. It handles user interactions and updates the model and view accordingly.

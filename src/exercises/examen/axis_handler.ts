@@ -10,7 +10,7 @@
  */
 
 import { random, sec } from 'mathjs';
-import { FunctionPoint } from '../function_point';
+import { FunctionPoint } from './function_point';
 import {CoordinateSystem} from './coordinate_system';
 
 /**
