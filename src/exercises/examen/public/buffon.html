@@ -20,8 +20,10 @@
 		<section class="section py-2">
 			<div class="container">
 			  <div class="box is-justify-content-center is-align-items-center">
-					<canvas id="needle-canvas" class="canvas" width="1000" height="500"></canvas>
-				    <div class="columns">
+				<div class="columns">	
+					<canvas id="needle-canvas" class="canvas" width="600" height="600"></canvas>
+				</div>
+				<div class="columns">
 						<div class="column">
 							<button id="drop-1" class="button is-primary " type="button">drop 1</button>
 							<button id="drop-10" class="button is-primary " type="button">drop 10</button>
@@ -30,15 +32,19 @@
 						</div>
 						<div class="column">
 							<div class="columns">
-								<button id="drop-custom" class="button is-primary column px-2" type="button">drop custom</button>
+								<button id="drop-custom" class="button is-primary is-half column px-2" type="button">drop custom</button>
 								<input id="drop-custom-text" class="input column" type="text" value="" />
 							</div>
 						</div>
-				    </div>
+				</div>
 					<button id="start-over" class="button" type="button">start-over</button>
-			  </div>
+				    <p><strong>Information here:</p>
+			        <p id="textOutput"> salida</p>
+				
 			</div>
+
 		</section>
+
 		<footer class="footer has-background-black-ter has-text-white-ter">
 			<div class="content has-text-centered">
 				<p>

@@ -10,7 +10,7 @@
  */
 
 import { random, sec } from 'mathjs';
-import { FunctionPoint } from '../model/function_point';
+import { FunctionPoint } from '../function_point';
 import {CoordinateSystem} from './coordinate_system';
 
 /**
@@ -74,7 +74,7 @@ export class AxisHandler {
     this.context.moveTo(lowerX, lowerY);
     this.context.lineTo(upperX, lowerY);
     this.context.stroke();
-    this.context.restore;
+    this.context.restore();
   }
 
   /**
@@ -92,8 +92,10 @@ export class AxisHandler {
     const colors = ['red', 'blue', 'green', 'yellow', 'orange', 'purple'];
     const color = colors[random(0, colors.length - 1)];
     this.context.strokeStyle = color;
+     this.context.beginPath();
     this.context.moveTo(firstX, firstY);
     this.context.lineTo(secondX, secondY);
+    this.context.stroke();
     this.context.restore();
 
   }

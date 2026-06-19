@@ -2,9 +2,7 @@
 /* Bulma Utilities */
 @import url("https://fonts.cdnfonts.com/css/argentum-sans");
 canvas {
-  max-width: 100%;
   display: block;
-  width: 100%;
   height: auto;
 }
 :root {

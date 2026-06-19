@@ -4,7 +4,7 @@
  */
 
 
-export * from './exercises/home-work/model/buffons_needle_model';
-export * from './exercises/home-work/view/buffon_needle_view';
-export * from './exercises/home-work/controller/buffons_needle_controller';
-export * from './exercises/home-work/main';
+export * from './exercises/examen/buffons_needle_model';
+export * from './exercises/examen/view/buffon_needle_view';
+export * from './exercises/examen/buffons_needle_controller';
+export * from './exercises/examen/main';

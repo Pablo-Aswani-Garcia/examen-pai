@@ -10,8 +10,8 @@
  * This file serves as the entry point for the application, bootstrapping the MVC components and ensuring that the user interface is ready for interaction.
  */
 
-import { BuffonNeedleController } from './controller/buffons_needle_controller';
-import {BuffonNeedleModel} from './model/buffons_needle_model.js';
+import { BuffonNeedleController } from './buffons_needle_controller';
+import {BuffonNeedleModel} from './buffons_needle_model.js';
 import {BuffonNeedleView } from './view/buffon_needle_view.js';
 
 

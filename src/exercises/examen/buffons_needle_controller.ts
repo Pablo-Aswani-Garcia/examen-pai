@@ -9,8 +9,9 @@
  * @desc 
  */
 
-import {BuffonNeedleModel} from '../model/buffons_needle_model';
-import {BuffonNeedleView} from '../view/buffon_needle_view';
+import {BuffonNeedleModel} from './buffons_needle_model';
+import { FunctionPoint } from './function_point';
+import {BuffonNeedleView} from './view/buffon_needle_view';
 
 /**
  * Controller class for the Buffon Needle program. It handles user interactions and updates the model and view accordingly.
@@ -23,6 +24,7 @@ export class BuffonNeedleController {
   private drop1000: HTMLButtonElement;
   private dropCustom: HTMLButtonElement;
   private customDrop: HTMLInputElement;
+  private textOutput: HTMLElement;
 
   /**
    * Initializes the controller with the given model and view, and sets up event listeners for user interactions.
@@ -37,10 +39,18 @@ export class BuffonNeedleController {
     this.drop1000 = document.getElementById('drop-1000') as HTMLButtonElement;
     this.dropCustom = document.getElementById('drop-custom') as HTMLButtonElement;
     this.customDrop = document.getElementById('drop-custom-text') as HTMLInputElement
+    this.textOutput = document.getElementById('textOutput') as HTMLElement;
     this.addEvents();
 
   }
 
+  /**
+   * show the output through the screen
+   * @param {FunctionPoint[]} output - output to show on screen 
+   */
+  updateOutput(output: FunctionPoint[]) {
+    this.textOutput.textContent = `Punto1:(${output[0].xPoint.toFixed(2)},${output[0].yPoint.toFixed(2)}), Punto2: (${output[1].xPoint.toFixed(2)},${output[1].yPoint.toFixed(2)})`;
+  }
   /**
    * Add the listeners to the corresponding events
    */
@@ -48,6 +58,7 @@ export class BuffonNeedleController {
     this.drop1.addEventListener('click', () => {
       let output = this.model.dropOneNeedle();
       this.view.renderNeedle(output);
+      this.updateOutput(output);
     });
 
   }

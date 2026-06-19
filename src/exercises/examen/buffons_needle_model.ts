@@ -9,8 +9,8 @@
  * @desc  Buffon's needle Model
  */
 
-import {evaluate, min, pi, random, sin} from 'mathjs';
-import {FunctionPoint} from './function_point.js';
+import {evaluate, min, pi, random, sec, sin} from 'mathjs';
+import {FunctionPoint} from './model/function_point.js';
 /**
  * Model class for the Buffons needle
  */
@@ -23,7 +23,7 @@ export class BuffonNeedleModel {
    */
   constructor() {
     this.numberOfNeedles = 1;
-    this.lowerBound = 1.5;
+    this.lowerBound = -1.5;
     this.upperBound = 1.5;
   }
 
@@ -51,9 +51,18 @@ export class BuffonNeedleModel {
    */
   dropOneNeedle():FunctionPoint[] {
     let firstPoint = this.extractRandomPoint();
-    let angle = random(0, 2 * pi);
-    let secondX = firstPoint.xPoint + Math.cos(angle);
-    let secondY = firstPoint.yPoint + Math.sin(angle);
+    
+    let secondX;
+    let secondY;
+    while (true) {
+      let angle = random(0, 2 * pi);
+      secondX = firstPoint.xPoint + Math.cos(angle);
+      secondY = firstPoint.yPoint + Math.sin(angle);
+      if (secondX > this.lowerBound && secondY > this.lowerBound && secondX < this.upperBound && secondY < this.upperBound) {
+        break;
+      }
+
+    }
     let secondPoint = {xPoint: secondX, yPoint: secondY} as FunctionPoint;
     return [firstPoint, secondPoint];
   }

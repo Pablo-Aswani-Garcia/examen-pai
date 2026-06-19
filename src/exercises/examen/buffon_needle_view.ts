@@ -10,7 +10,7 @@
  */
 
 import {AxisHandler} from './axis_handler';
-import {FunctionPoint} from '../model/function_point';
+import {FunctionPoint} from '../function_point';
 
 /**
  * View class for the Buffon's needle program
@@ -20,6 +20,7 @@ export class BuffonNeedleView {
   private readonly context: CanvasRenderingContext2D;
   private readonly axisHandler: AxisHandler;
   private readonly resultElement: HTMLElement;
+
   /**
    * Initializes the view by selecting the necessary DOM elements and creating an instance of the AxisHandler class.
    */
@@ -47,7 +48,8 @@ export class BuffonNeedleView {
    * @param {FunctionPoint} needle - the needle to show on screen
    */
   renderNeedle(needle: FunctionPoint[]) {
-    this.axisHandler.drawLine(needle);
+    
+    this.axisHandler.drawLine(needle, -1.5, 1.5);
 
   }
 
