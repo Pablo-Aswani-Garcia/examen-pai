@@ -9,7 +9,7 @@
  * @desc  Buffon's needle Model
  */
 
-import {evaluate, min, pi, random, sec, sin} from 'mathjs';
+import {evaluate, min, pi, random, sec, sin, sqrt} from 'mathjs';
 import {FunctionPoint} from './function_point.js';
 /**
  * Model class for the Buffons needle
@@ -45,6 +45,41 @@ export class BuffonNeedleModel {
     let randomPointX = random(this.lowerBound, this.upperBound);
     let randomPointY = random(this.lowerBound, this.upperBound);
     return {xPoint: randomPointX, yPoint: randomPointY};
+  }
+
+  /**
+   * Returns the distance between two points
+   * @param point first point
+   * @param secondPoint secondPoint
+   */
+  distanceTo(point: FunctionPoint, secondPoint: FunctionPoint): number {
+    return Math.sqrt((point.xPoint - secondPoint.xPoint)**2 + (point.yPoint - secondPoint.yPoint)**2);
+  }
+
+  /**
+   * the angle the line makes
+   * @param {FunctionPoint[]} line - the line to calculate the angle
+   */
+  angle(line: FunctionPoint[]): number {
+    return Math.atan((line[1].yPoint - line[0].yPoint) / (line[1].xPoint - line[0].xPoint));
+  }
+
+  /**
+   * Calculates minimal distances to the two lines
+   * @param {FunctionPoint} point - point to calculate minimal distance
+   */
+  minimalDistanceToLines(point: FunctionPoint): number {
+    return Math.min(this.distanceTo(point, {xPoint: point.xPoint, yPoint: -0.5}), this.distanceTo(point, {xPoint: point.xPoint, yPoint: -0.5}));
+  }
+
+  /**
+   * returns the middle point
+   * @param {FunctionPoint[]} line - line to find middle point
+   */
+  middlePoint(line: FunctionPoint[]): FunctionPoint {
+    let middleX = (line[0].xPoint + line[1].xPoint) / 2;
+    let middleY = (line[0].yPoint + line[1].yPoint) / 2;
+    return {xPoint: middleX, yPoint: middleY};
   }
   /**
    * Drops one needle randomly

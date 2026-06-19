@@ -47,9 +47,14 @@ export class BuffonNeedleController {
   /**
    * show the output through the screen
    * @param {FunctionPoint[]} output - output to show on screen 
+   * @param {FunctionPoint} middlePoint - middle point 
+   * @param {number} angle - angle to show
    */
-  updateOutput(output: FunctionPoint[]) {
+  updateOutput(output: FunctionPoint[], middlePoint: FunctionPoint, angle: number) {
     this.textOutput.textContent = `Punto1:(${output[0].xPoint.toFixed(2)},${output[0].yPoint.toFixed(2)}), Punto2: (${output[1].xPoint.toFixed(2)},${output[1].yPoint.toFixed(2)})`;
+    this.textOutput.textContent  += `\n Punto medio:(${middlePoint.xPoint.toFixed(2)},${middlePoint.yPoint.toFixed(2)})`;
+    this.textOutput.textContent += `\n Distancia:(${this.model.minimalDistanceToLines(middlePoint).toFixed(2)})`;
+    this.textOutput.textContent += `, angulo: ${angle.toFixed(2)}`;
   }
   /**
    * Add the listeners to the corresponding events
@@ -58,7 +63,9 @@ export class BuffonNeedleController {
     this.drop1.addEventListener('click', () => {
       let output = this.model.dropOneNeedle();
       this.view.renderNeedle(output);
-      this.updateOutput(output);
+      let middle = this.model.middlePoint(output);
+      let angle = this.model.angle(output);
+      this.updateOutput(output, middle, angle);
     });
 
   }
