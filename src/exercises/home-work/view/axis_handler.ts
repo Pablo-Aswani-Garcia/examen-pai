@@ -9,16 +9,18 @@
  * @desc AxisDrawer class responsible for drawing the axes, grid, and tick marks on the canvas for the Trapezoidal Rule Calculator application. It provides methods to render the chart background, axes, and tick marks based on the data range and scaling requirements.
  */
 
+import { random, sec } from 'mathjs';
+import { FunctionPoint } from '../model/function_point';
 import {CoordinateSystem} from './coordinate_system';
 
 /**
- * Draws the chart background, axes, and tick marks for the trapezoidal-rule canvas.
+ * Draws the chart background, axes, and tick marks for a generic axis .
  */
 export class AxisHandler {
-  private leftPadding = 128;
-  private rightPadding = 64;
-  private topPadding = 64;
-  private bottomPadding = 128;
+  private leftPadding = 20;
+  private rightPadding = 20;
+  private topPadding = 20;
+  private bottomPadding = 80;
   private readonly tickNumberFormatter = new Intl.NumberFormat('es-ES', {
     maximumFractionDigits: 10,
   });
@@ -48,8 +50,53 @@ export class AxisHandler {
     this.drawTickMarks(coordinateSystem, tickCount);
     this.drawAxisLabels();
     this.context.restore();
+    this.drawUnitLines(minY, maxY);
   }
 
+  /**
+   * Draws the unit lines at y= -0.5 and 0.5
+   * @param minValue - the minValue (in this case -1.5)
+   * @param maxValue - the max value (in this case 1.5)
+   */
+  drawUnitLines(minValue:number, maxValue:number) {
+    this.context.save();
+    this.context.strokeStyle = 'blue';
+    this.context.lineWidth = 4;
+    const upperLine = 0.5;
+    const lowerLine = -0.5;
+    let upperY = this.toCanvasY(upperLine, minValue, maxValue);
+    let lowerY = this.toCanvasY(lowerLine, minValue, maxValue);
+    let lowerX = this.toCanvasX(minValue, minValue, maxValue);
+    let upperX = this.toCanvasX(maxValue, minValue, maxValue);
+    this.context.moveTo(lowerX, upperY);
+    this.context.lineTo(upperX, upperY);
+    this.context.stroke();
+    this.context.moveTo(lowerX, lowerY);
+    this.context.lineTo(upperX, lowerY);
+    this.context.stroke();
+    this.context.restore;
+  }
+
+  /**
+   * Draws a line in the functionPoints
+   * @param {FunctionPoint[]} line - the line to evaluate
+   * @param {number} minValue - the minValue of the axis
+   * @param {number} maxValue - the maxValue of the axis
+   */
+  drawLine(line: FunctionPoint[], minValue: number, maxValue: number) {
+    const firstX = this.toCanvasX(line[0].xPoint, minValue, maxValue);
+    const firstY = this.toCanvasY(line[0].yPoint, minValue, maxValue);
+    const secondX = this.toCanvasX(line[1].xPoint, minValue, maxValue);
+    const secondY = this.toCanvasY(line[1].yPoint, minValue, maxValue);
+    this.context.save();
+    const colors = ['red', 'blue', 'green', 'yellow', 'orange', 'purple'];
+    const color = colors[random(0, colors.length - 1)];
+    this.context.strokeStyle = color;
+    this.context.moveTo(firstX, firstY);
+    this.context.lineTo(secondX, secondY);
+    this.context.restore();
+
+  }
   /**
    * Transforms a data x-coordinate to the corresponding canvas x-coordinate based on the current axis scaling and padding.
    * @param {number} xPosition The x-coordinate in the data space to be transformed.

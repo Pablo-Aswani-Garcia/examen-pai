@@ -35,7 +35,19 @@ export class BuffonNeedleView {
    * Draws an initial axis with [-3, 3] as lower and upper limits
    */
   drawAxis() { 
-    this.axisHandler.draw(-3, 3, -3, 3, 12)
+    // from -1.5 to 1.5, 6 ticks
+    const tickCount = 6;
+    const minCoordinate = -1.5;
+    const maxCoordinate = 1.5;
+    this.axisHandler.draw(minCoordinate, maxCoordinate, minCoordinate, maxCoordinate, tickCount)
+  }
+
+  /**
+   * Renders a needle in the viewport
+   * @param {FunctionPoint} needle - the needle to show on screen
+   */
+  renderNeedle(needle: FunctionPoint[]) {
+    this.axisHandler.drawLine(needle);
 
   }
 

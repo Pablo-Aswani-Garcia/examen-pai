@@ -37,6 +37,20 @@ export class BuffonNeedleController {
     this.drop1000 = document.getElementById('drop-1000') as HTMLButtonElement;
     this.dropCustom = document.getElementById('drop-custom') as HTMLButtonElement;
     this.customDrop = document.getElementById('drop-custom-text') as HTMLInputElement
+    this.addEvents();
+
   }
+
+  /**
+   * Add the listeners to the corresponding events
+   */
+  addEvents() {
+    this.drop1.addEventListener('click', () => {
+      let output = this.model.dropOneNeedle();
+      this.view.renderNeedle(output);
+    });
+
+  }
+
 
 }
