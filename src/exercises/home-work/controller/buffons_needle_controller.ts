@@ -1,0 +1,42 @@
+/**
+ * Universidad de La Laguna
+ * Escuela Superior de Ingeniería y Tecnología
+ * Grado en Ingeniería Informática
+ * Programación de Aplicaciones Interactivas
+ *
+ * @author Pablo Aswani García
+ * @since June 19 2026
+ * @desc 
+ */
+
+import {BuffonNeedleModel} from '../model/buffons_needle_model';
+import {BuffonNeedleView} from '../view/buffon_needle_view';
+
+/**
+ * Controller class for the Buffon Needle program. It handles user interactions and updates the model and view accordingly.
+ */
+export class BuffonNeedleController {
+  private readonly model: BuffonNeedleModel;
+  private readonly view: BuffonNeedleView;
+  private drop1: HTMLButtonElement;
+  private drop100: HTMLButtonElement;
+  private drop1000: HTMLButtonElement;
+  private dropCustom: HTMLButtonElement;
+  private customDrop: HTMLInputElement;
+
+  /**
+   * Initializes the controller with the given model and view, and sets up event listeners for user interactions.
+   * @param {BuffonNeedleModel} model - The game model that manages the game state and logic.
+   * @param {BuffonNeedleView} view - The game view that handles the display of game information and user interface.
+   */
+  constructor(model: BuffonNeedleModel, view: BuffonNeedleView) {
+    this.model = model;
+    this.view = view;
+    this.drop1 = document.getElementById('drop-1') as HTMLButtonElement;
+    this.drop100 = document.getElementById('drop-100') as HTMLButtonElement;
+    this.drop1000 = document.getElementById('drop-1000') as HTMLButtonElement;
+    this.dropCustom = document.getElementById('drop-custom') as HTMLButtonElement;
+    this.customDrop = document.getElementById('drop-custom-text') as HTMLInputElement
+  }
+
+}

@@ -1,0 +1,38 @@
+{
+  "display": "Reading JSON data in PAI",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "declaration": false,
+    "alwaysStrict": true,
+    "strict": true,
+    "lib": [
+      "ESNext",
+      "dom"
+    ],
+    "types": [],
+    "noImplicitAny": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "src/home-work",
+    "src/exercises",
+    "src/index.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "lib",
+    "test",
+    "public",
+    "read-JSON-app",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "**/__tests__/**"
+  ]
+}
